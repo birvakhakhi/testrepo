@@ -11,20 +11,6 @@
 
 ---
 
-## 📸 Screenshots
-
-| Today View | Forecast Tab |
-|---|---|
-| ![Today](https://via.placeholder.com/500x300/deedf8/2563eb?text=Today+View) | ![Forecast](https://via.placeholder.com/500x300/deedf8/2563eb?text=Forecast+Tab) |
-
-| Dark Mode | City Compare |
-|---|---|
-| ![Dark](https://via.placeholder.com/500x300/0f172a/60a5fa?text=Dark+Mode) | ![Compare](https://via.placeholder.com/500x300/deedf8/2563eb?text=Compare+Cities) |
-
-> 💡 Replace the placeholder images above with actual screenshots of your project.
-
----
-
 ## ✨ Features
 
 ### 🌤️ Core Weather Data
@@ -286,9 +272,9 @@ document.body.classList.toggle('dark', isDark);
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Authors
 
-**Birva Khakhi**
+**Birva Khakhi, Heer Monpara, Dhyey Kachariya**
 - GitHub: github.com/birvakhakhi/testrepo
 - Project Link: [https://github.com/birvakhakhi/weatherwave](https://github.com/birvakhakhi/weatherwave)
 
