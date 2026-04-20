@@ -1,0 +1,42 @@
+/* ============================================
+   ANIMATIONS.CSS
+   All @keyframes and animation utility classes
+   ============================================ */
+
+/* ── Spinner ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Floating weather icon ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ── Map pin bounce ── */
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, -80%); }
+  50%       { transform: translate(-50%, -100%); }
+}
+
+/* ── Map ripple rings ── */
+@keyframes ripple {
+  0%   { opacity: 0.6; transform: translate(-50%, -50%) scale(0.8); }
+  100% { opacity: 0;   transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* ── Fade Up (page load animation) ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Fade Up utility classes with staggered delays ── */
+.fu  { animation: fadeUp 0.5s ease both; }
+.fu1 { animation-delay: 0.06s; }
+.fu2 { animation-delay: 0.12s; }
+.fu3 { animation-delay: 0.18s; }
+.fu4 { animation-delay: 0.24s; }
+.fu5 { animation-delay: 0.30s; }
+.fu6 { animation-delay: 0.36s; }

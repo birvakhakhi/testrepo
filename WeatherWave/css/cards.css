@@ -1,0 +1,428 @@
+/* ============================================
+   CARDS.CSS
+   Hourly forecast cards, favorites strip,
+   Sun/UV card, Wind compass, Feels Like,
+   AQI card, Location Map card
+   ============================================ */
+
+/* ── Hourly Forecast Scroll ── */
+.hourly-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #b8d9f5 transparent;
+}
+
+.hourly-scroll::-webkit-scrollbar { height: 4px; }
+.hourly-scroll::-webkit-scrollbar-thumb { background: #b8d9f5; border-radius: 4px; }
+
+.hour-card {
+  min-width: 90px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--rs);
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  flex-shrink: 0;
+  box-shadow: var(--shadow);
+}
+
+.hour-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(30, 80, 140, 0.16);
+}
+
+.hour-card.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.h-time  { font-size: 0.8rem;  font-weight: 600; opacity: 0.8; }
+.h-icon  { font-size: 1.65rem; }
+.h-temp  { font-size: 1rem;    font-weight: 700; }
+.h-rain  { font-size: 0.72rem; opacity: 0.7; color: var(--accent2); }
+.hour-card.active .h-rain { color: #bfdbfe; }
+
+/* ── Favorites Strip ── */
+.fav-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 24px;
+}
+
+.fav-strip::-webkit-scrollbar { display: none; }
+
+.fav-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  font-size: 0.88rem;
+  flex-shrink: 0;
+}
+
+.fav-chip:hover { border-color: var(--accent); color: var(--accent); }
+.fav-chip .fav-temp  { font-weight: 700; color: var(--accent); }
+.fav-chip .fav-remove { color: var(--muted); font-size: 0.75rem; margin-left: 4px; }
+.fav-chip .fav-remove:hover { color: #ef4444; }
+
+.fav-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1.5px dashed rgba(180, 210, 240, 0.6);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: var(--muted);
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.fav-add-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Sun & UV Card ── */
+.sun-card {
+  background: linear-gradient(135deg, #fdf6e3, #fef3c7);
+  border-color: #fde68a;
+}
+
+body.dark .sun-card {
+  background: linear-gradient(135deg, #292218, #2d2510);
+  border-color: #78350f;
+}
+
+.sun-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.sun-row:last-child { border-bottom: none; }
+.sun-lbl { display: flex; align-items: center; gap: 10px; font-size: 0.93rem; font-weight: 500; }
+.sun-val { font-size: 0.95rem; font-weight: 600; }
+
+.uv-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #84cc16, #facc15, #f97316, #ef4444);
+  margin-top: 8px;
+  position: relative;
+}
+
+.uv-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2.5px solid #ef4444;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.8s;
+}
+
+.daylight-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(180, 210, 240, 0.3);
+  position: relative;
+  margin-top: 12px;
+  overflow: visible;
+}
+
+.daylight-fill {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(to right, #f97316, #facc15, #f97316);
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+.sun-now-dot {
+  position: absolute;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #f97316;
+  border: 2px solid #fff;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+}
+
+/* ── Wind Compass ── */
+.compass-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.compass {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 2px solid rgba(180, 210, 240, 0.4);
+  position: relative;
+  background: var(--card-bg);
+}
+
+body.dark .compass { border-color: rgba(51, 65, 85, 0.6); }
+
+.compass-ring {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px dashed rgba(180, 210, 240, 0.3);
+}
+
+.compass-dir {
+  position: absolute;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.compass-dir.n { top: 6px;    left: 50%; transform: translateX(-50%); }
+.compass-dir.s { bottom: 6px; left: 50%; transform: translateX(-50%); }
+.compass-dir.e { right: 8px;  top: 50%;  transform: translateY(-50%); }
+.compass-dir.w { left: 8px;   top: 50%;  transform: translateY(-50%); }
+
+.compass-needle {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 4px; height: 44px;
+  margin-left: -2px; margin-top: -38px;
+  transform-origin: bottom center;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(to bottom, #ef4444 50%, var(--muted) 50%);
+}
+
+.compass-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--text);
+  transform: translate(-50%, -50%);
+}
+
+.wind-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.wind-stat { text-align: center; }
+.wind-stat-val { font-size: 1.3rem; font-weight: 600; color: var(--text); }
+.wind-stat-lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+/* ── Feels Like Card ── */
+.feels-card {
+  background: linear-gradient(135deg, #e8f4fd, #d0eafb);
+  border-color: #bdd6f0;
+}
+
+body.dark .feels-card {
+  background: linear-gradient(135deg, #162033, #1a2840);
+  border-color: #1e3a5f;
+}
+
+.feels-big {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: var(--accent);
+  letter-spacing: -2px;
+  margin: 8px 0;
+}
+
+.feels-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── AQI Card ── */
+.aqi-card { margin-top: 20px; }
+
+.aqi-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.aqi-status { font-size: 0.93rem; font-weight: 600; }
+
+.aqi-badge {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.aqi-bar {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(to right, #22c55e, #84cc16, #facc15, #f97316, #ef4444);
+  position: relative;
+  margin: 10px 0;
+}
+
+.aqi-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--text);
+  border: 2.5px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: left 0.8s;
+}
+
+.aqi-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* ── Weather Tip Card ── */
+.tip-card {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-color: #86efac;
+}
+
+body.dark .tip-card {
+  background: linear-gradient(135deg, #052e16, #14532d);
+  border-color: #166534;
+}
+
+.tip-icon  { font-size: 2rem; margin-bottom: 8px; }
+.tip-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #15803d;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+body.dark .tip-title { color: #4ade80; }
+.tip-text { font-size: 0.9rem; line-height: 1.6; color: var(--text); }
+
+/* ── Location Map Card ── */
+.map-card { overflow: hidden; padding: 0; }
+
+.map-inner {
+  background: linear-gradient(145deg, #c8e6f5, #a8d4ef, #88c2e8);
+  height: 200px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r);
+}
+
+.map-pin {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -80%);
+  font-size: 2.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+.map-label {
+  position: absolute;
+  bottom: 16px; left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
+
+.map-rings {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(37, 99, 235, 0.25);
+  transform: translate(-50%, -50%);
+  animation: ripple 2.5s ease-out infinite;
+}
+
+.ring:nth-child(1) { width: 60px;  height: 60px;  animation-delay: 0s; }
+.ring:nth-child(2) { width: 110px; height: 110px; animation-delay: 0.5s; }
+.ring:nth-child(3) { width: 160px; height: 160px; animation-delay: 1s; }
+
+/* ── Air Details Grid ── */
+.air-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.air-lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.air-val { font-size: 1.85rem; font-weight: 300; color: var(--text); }
+.air-val small { font-size: 0.88rem; color: var(--muted); font-weight: 400; }
+
+.air-bar {
+  height: 4px;
+  background: rgba(180, 210, 240, 0.35);
+  border-radius: 2px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+body.dark .air-bar { background: rgba(51, 65, 85, 0.5); }
+
+.air-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--accent2), var(--accent));
+  border-radius: 2px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}

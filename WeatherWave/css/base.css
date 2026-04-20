@@ -1,0 +1,228 @@
+/* ============================================
+   BASE.CSS
+   Global reset, CSS variables, body styles,
+   layout containers, shared utility classes
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── CSS Variables (Light Mode) ── */
+:root {
+  --bg: #deedf8;
+  --card-bg: rgba(255, 255, 255, 0.84);
+  --card-border: rgba(255, 255, 255, 0.95);
+  --text: #1a2a3a;
+  --muted: #5e7d99;
+  --accent: #2563eb;
+  --accent2: #0ea5e9;
+  --shadow: 0 4px 24px rgba(30, 80, 140, 0.10);
+  --r: 20px;
+  --rs: 12px;
+}
+
+/* ── CSS Variables (Dark Mode) ── */
+body.dark {
+  --bg: #0f172a;
+  --card-bg: rgba(30, 41, 59, 0.9);
+  --card-border: rgba(51, 65, 85, 0.8);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Body ── */
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+  transition: background 0.6s, color 0.3s;
+}
+
+/* ── Main Container ── */
+main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+}
+
+/* ── Section Spacing ── */
+.section {
+  margin-bottom: 26px;
+}
+
+/* ── Section Title ── */
+.sec-title {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* ── Grid Layouts ── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+/* ── Base Card ── */
+.card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--r);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 999px;
+  padding: 5px;
+  width: fit-content;
+  box-shadow: var(--shadow);
+}
+
+.tab {
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--muted);
+  border: none;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* ── Unit Toggle ── */
+.unit-toggle {
+  display: flex;
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.unit-btn {
+  padding: 7px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+
+.unit-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── Buttons ── */
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 9px 22px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn:hover { background: #1d4ed8; }
+.btn:active { transform: scale(0.97); }
+
+.icon-btn {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 999px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--muted);
+}
+
+.icon-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.08);
+}
+
+/* ── Toast Notification ── */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 999px;
+  padding: 10px 24px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  z-index: 999;
+  transition: transform 0.3s;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Loading & Error States ── */
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  text-align: center;
+  color: var(--muted);
+  gap: 16px;
+}
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid rgba(180, 210, 240, 0.4);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}

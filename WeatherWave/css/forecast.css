@@ -1,0 +1,95 @@
+/* ============================================
+   FORECAST.CSS
+   3-day forecast rows and rain chart styles
+   ============================================ */
+
+/* ── Day Forecast Row ── */
+.day-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(180, 210, 240, 0.25);
+}
+
+body.dark .day-row { border-bottom-color: rgba(51, 65, 85, 0.4); }
+.day-row:last-child { border-bottom: none; }
+
+.day-name     { font-weight: 600; font-size: 0.95rem; width: 46px; flex-shrink: 0; }
+.day-icon-col { font-size: 1.5rem; width: 34px; text-align: center; }
+.day-cond     { flex: 1; font-size: 0.86rem; color: var(--muted); }
+
+.day-temp-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.day-low  { font-size: 0.88rem; color: var(--muted); width: 28px; text-align: right; }
+.day-high { font-size: 0.88rem; font-weight: 600; width: 28px; }
+
+.temp-range {
+  flex: 1;
+  height: 4px;
+  background: rgba(180, 210, 240, 0.4);
+  border-radius: 2px;
+  position: relative;
+}
+
+body.dark .temp-range { background: rgba(51, 65, 85, 0.6); }
+
+.temp-range-fill {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(to right, #f97316, #ef4444);
+  border-radius: 2px;
+}
+
+.day-rain-pct {
+  font-size: 0.75rem;
+  color: var(--accent2);
+  width: 30px;
+  text-align: right;
+}
+
+/* ── Rain Probability Bar Chart ── */
+.rain-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 80px;
+  padding-top: 10px;
+}
+
+.rain-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.rain-bar-outer {
+  width: 100%;
+  background: rgba(180, 210, 240, 0.3);
+  border-radius: 4px 4px 0 0;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+}
+
+body.dark .rain-bar-outer { background: rgba(51, 65, 85, 0.4); }
+
+.rain-bar-inner {
+  width: 100%;
+  background: linear-gradient(to top, var(--accent), var(--accent2));
+  border-radius: 4px 4px 0 0;
+  transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 2px;
+}
+
+.rain-bar-label {
+  font-size: 0.68rem;
+  color: var(--muted);
+}

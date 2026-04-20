@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WeatherWave — Dashboard</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/navbar.css"/>
+  <link rel="stylesheet" href="css/hero.css"/>
+  <link rel="stylesheet" href="css/cards.css"/>
+  <link rel="stylesheet" href="css/forecast.css"/>
+  <link rel="stylesheet" href="css/details.css"/>
+  <link rel="stylesheet" href="css/compare.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+
+  <!-- React & Babel via CDN (no build tools needed) -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+  <!-- React mounts here -->
+  <div id="root"></div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Utility functions (no JSX, plain JS) -->
+  <script src="js/utils/weatherHelpers.js"></script>
+  <script src="js/utils/tempHelpers.js"></script>
+  <script src="js/utils/timeHelpers.js"></script>
+
+  <!-- React Components (JSX — must be type="text/babel") -->
+  <script type="text/babel" src="js/components/Navbar.jsx"></script>
+  <script type="text/babel" src="js/components/HeroCard.jsx"></script>
+  <script type="text/babel" src="js/components/HourlyForecast.jsx"></script>
+  <script type="text/babel" src="js/components/RainChart.jsx"></script>
+  <script type="text/babel" src="js/components/DailyForecast.jsx"></script>
+  <script type="text/babel" src="js/components/AirDetails.jsx"></script>
+  <script type="text/babel" src="js/components/SunUVCard.jsx"></script>
+  <script type="text/babel" src="js/components/WindCompass.jsx"></script>
+  <script type="text/babel" src="js/components/WeatherTip.jsx"></script>
+  <script type="text/babel" src="js/components/AQICard.jsx"></script>
+  <script type="text/babel" src="js/components/CompareTab.jsx"></script>
+  <script type="text/babel" src="js/components/FavoritesStrip.jsx"></script>
+
+  <!-- Custom React Hooks -->
+  <script type="text/babel" src="js/hooks/useWeather.jsx"></script>
+  <script type="text/babel" src="js/hooks/useFavorites.jsx"></script>
+
+  <!-- Main App entry -->
+  <script type="text/babel" src="js/App.jsx"></script>
+
+</body>
+</html>
